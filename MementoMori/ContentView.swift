@@ -8,19 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var lifeData: LifeData
+    
+    @State private var presentOptions = false
+        
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.accentColor)
+                Text(String(lifeData.lifeTime.numberOfDots))
+            }
+            .padding()
+            .navigationTitle("Your Life")
+            
+            .toolbar {
+                Button(action: { presentOptions = true }) { Label("Options", systemImage: "ellipsis.circle")}
+            }
+            .sheet(isPresented: $presentOptions) {
+                NavigationView {
+                    OptionsView(lifeTime: $lifeData.lifeTime)
+                        .navigationTitle("Options")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: { presentOptions = false }) { Label("Dismiss", systemImage: "x.circle.fill")}
+                                }
+                            }
+                        
+                }
+                .accentColor(lifeData.lifeTime.accentColor)
+            }
+            .accentColor(lifeData.lifeTime.accentColor)
+            
         }
-        .padding()
+        
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-    }
+        ContentView(lifeData: LifeData())
+                }
 }

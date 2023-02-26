@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct MementoMoriApp: App {
+    
+    @StateObject private var lifeData = LifeData()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(lifeData: lifeData)
+                .accentColor(lifeData.lifeTime.accentColor)
         }
     }
 }
