@@ -11,4 +11,13 @@ class LifeData: ObservableObject {
     
     @Published var lifeTime: LifeTime = LifeTime()
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

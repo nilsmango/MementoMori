@@ -30,6 +30,8 @@ struct YourLifeInYears: View {
             return Array(repeating: GridItem(.fixed(6)), count: 24)
         case .weeks:
             return Array(repeating: GridItem(.fixed(4), spacing: 3), count: 52)
+        default:
+            return Array(repeating: GridItem(.fixed(4), spacing: 3), count: 52)
         }
     }
     
@@ -41,6 +43,8 @@ struct YourLifeInYears: View {
             return lifeExpectancy * 12
         case .weeks:
             return Int(Double(lifeExpectancy) * 52.17857)
+        case .days:
+            return lifeExpectancy * 365
         }
     }
     
@@ -52,19 +56,12 @@ struct YourLifeInYears: View {
             return age * 12
         case .weeks:
             return Int(Double(age) * 52.17857)
+        case .days:
+            return Int(Double(age) * 52.17857 * 7)
         }
     }
     
-    var timeScaleString: String {
-        switch timeScale {
-        case .years:
-            return "Years"
-        case .months:
-            return "Months"
-        case .weeks:
-            return "Weeks"
-        }
-    }
+
     
     var spacing: CGFloat {
         switch timeScale {
@@ -74,6 +71,8 @@ struct YourLifeInYears: View {
             return 4
         case .weeks:
             return 3
+        case .days:
+            return 2
         }
     }
     
@@ -85,6 +84,8 @@ struct YourLifeInYears: View {
             return 11
         case .weeks:
             return 5
+        case .days:
+            return 4
         }
     }
     
@@ -92,7 +93,7 @@ struct YourLifeInYears: View {
 
     var body: some View {
         VStack {
-            Text("Your Life in " + timeScaleString)
+            Text("Your Life in " + timeScale.rawValue.capitalized)
                 .font(.title)
             
             LazyVGrid(columns: columns, spacing: spacing) {

@@ -12,11 +12,15 @@
 		78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1337C29A64C5100CE924F /* Assets.xcassets */; };
 		78B1338129A64C5100CE924F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1338029A64C5100CE924F /* Preview Assets.xcassets */; };
 		78B1338829A64C9C00CE924F /* LifeDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338729A64C9C00CE924F /* LifeDots.swift */; };
-		78B1338B29A64CC000CE924F /* TimeScale + PossibleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338A29A64CC000CE924F /* TimeScale + PossibleColors.swift */; };
+		78B1338B29A64CC000CE924F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338A29A64CC000CE924F /* Enums.swift */; };
 		78B1338D29A64CE400CE924F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338C29A64CE400CE924F /* ProgressBar.swift */; };
 		78B1338F29A662C300CE924F /* LifeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338E29A662C300CE924F /* LifeTime.swift */; };
 		78B1339329AA9D1B00CE924F /* LifeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339229AA9D1B00CE924F /* LifeData.swift */; };
 		78B1339529AAA44E00CE924F /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339429AAA44E00CE924F /* OptionsView.swift */; };
+		78B1339829ABC53200CE924F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339729ABC53200CE924F /* ProgressView.swift */; };
+		78B1339A29ABC8F800CE924F /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339929ABC8F800CE924F /* DotsView.swift */; };
+		78B1339C29ACBBF100CE924F /* Memento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339B29ACBBF100CE924F /* Memento.swift */; };
+		78B1339E29ACF8FE00CE924F /* MementoNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +31,15 @@
 		78B1337E29A64C5100CE924F /* MementoMori.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MementoMori.entitlements; sourceTree = "<group>"; };
 		78B1338029A64C5100CE924F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78B1338729A64C9C00CE924F /* LifeDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeDots.swift; sourceTree = "<group>"; };
-		78B1338A29A64CC000CE924F /* TimeScale + PossibleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeScale + PossibleColors.swift"; sourceTree = "<group>"; };
+		78B1338A29A64CC000CE924F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		78B1338C29A64CE400CE924F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		78B1338E29A662C300CE924F /* LifeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTime.swift; sourceTree = "<group>"; };
 		78B1339229AA9D1B00CE924F /* LifeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeData.swift; sourceTree = "<group>"; };
 		78B1339429AAA44E00CE924F /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		78B1339729ABC53200CE924F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		78B1339929ABC8F800CE924F /* DotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
+		78B1339B29ACBBF100CE924F /* Memento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memento.swift; sourceTree = "<group>"; };
+		78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoNotifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +75,10 @@
 				78B1337829A64C5000CE924F /* MementoMoriApp.swift */,
 				78B1337A29A64C5000CE924F /* ContentView.swift */,
 				78B1339429AAA44E00CE924F /* OptionsView.swift */,
-				78B1338729A64C9C00CE924F /* LifeDots.swift */,
-				78B1338C29A64CE400CE924F /* ProgressBar.swift */,
+				78B1339B29ACBBF100CE924F /* Memento.swift */,
+				78B1339929ABC8F800CE924F /* DotsView.swift */,
+				78B1339729ABC53200CE924F /* ProgressView.swift */,
+				78B1339629ABC4F700CE924F /* Experiments */,
 				78B1338929A64CAA00CE924F /* Model */,
 				78B1337C29A64C5100CE924F /* Assets.xcassets */,
 				78B1337E29A64C5100CE924F /* MementoMori.entitlements */,
@@ -88,11 +98,21 @@
 		78B1338929A64CAA00CE924F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				78B1338A29A64CC000CE924F /* TimeScale + PossibleColors.swift */,
+				78B1338A29A64CC000CE924F /* Enums.swift */,
 				78B1338E29A662C300CE924F /* LifeTime.swift */,
 				78B1339229AA9D1B00CE924F /* LifeData.swift */,
+				78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		78B1339629ABC4F700CE924F /* Experiments */ = {
+			isa = PBXGroup;
+			children = (
+				78B1338C29A64CE400CE924F /* ProgressBar.swift */,
+				78B1338729A64C9C00CE924F /* LifeDots.swift */,
+			);
+			path = Experiments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,14 +185,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B1339E29ACF8FE00CE924F /* MementoNotifications.swift in Sources */,
 				78B1337B29A64C5000CE924F /* ContentView.swift in Sources */,
-				78B1338B29A64CC000CE924F /* TimeScale + PossibleColors.swift in Sources */,
+				78B1338B29A64CC000CE924F /* Enums.swift in Sources */,
+				78B1339C29ACBBF100CE924F /* Memento.swift in Sources */,
 				78B1339329AA9D1B00CE924F /* LifeData.swift in Sources */,
 				78B1339529AAA44E00CE924F /* OptionsView.swift in Sources */,
 				78B1338F29A662C300CE924F /* LifeTime.swift in Sources */,
 				78B1338829A64C9C00CE924F /* LifeDots.swift in Sources */,
+				78B1339A29ABC8F800CE924F /* DotsView.swift in Sources */,
 				78B1338D29A64CE400CE924F /* ProgressBar.swift in Sources */,
 				78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */,
+				78B1339829ABC53200CE924F /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

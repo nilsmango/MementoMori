@@ -12,11 +12,13 @@ import SwiftUI
 struct LifeTime {
     
     
-    var birthDay: Date = Date(timeIntervalSinceReferenceDate: -123473789.0)
+    var birthDay: Date = Date(timeIntervalSinceReferenceDate: -479673789.0)
     
-    var timeScale: TimeScale = .years
+    var timeScale: TimeScale = .days
     
-    var lifeExpectancyInYears: Int = 80
+    var graphic: PossibleGraphics = .progress
+    
+    var lifeExpectancyInYears: Int = 75
     
     /// Accent color chosen by the user.
     var accentColorSelection: PossibleColors = .red
@@ -82,24 +84,37 @@ struct LifeTime {
         }
     }
     
+    var lifeExpectancyInMonths: Int {
+        return lifeExpectancyInYears * 12
+    }
+    
+    var lifeExpectancyInWeeks: Int {
+        return (Calendar.current.dateComponents([.day], from: birthDay, to: dateOfEndOfLife).day ?? 7) / 7
+    }
+    
+    var lifeExpectancyInDays: Int {
+        return Calendar.current.dateComponents([.day], from: birthDay, to: dateOfEndOfLife).day ?? 0
+    }
+    
+    
     var ageInDays: Int {
-        return Calendar.current.dateComponents([.day], from: birthDay).day ?? 0
+        return Calendar.current.dateComponents([.day], from: birthDay, to: Date.now).day ?? 0
     }
     var ageInWeeks: Int {
         return Int(ageInDays / 7)
     }
     
     var ageInMonths: Int {
-        return Calendar.current.dateComponents([.month], from: birthDay).month ?? 0
+        return Calendar.current.dateComponents([.month], from: birthDay, to: Date.now).month ?? 0
     }
     
     var ageInYears: Int {
-        return Calendar.current.dateComponents([.year], from: birthDay).month ?? 0
+        return Calendar.current.dateComponents([.year], from: birthDay, to: Date.now).year ?? 0
     }
     
     var dateOfEndOfLife: Date {
         var yearComponent = DateComponents()
-        yearComponent.year = lifeExpectancyInYears - ageInYears
+        yearComponent.year = (Calendar.current.dateComponents([.year], from: Date.now).year ?? 0) + lifeExpectancyInYears - ageInYears
         let date = Calendar.current.date(from: yearComponent) ?? Date.now
         return date
     }
@@ -109,20 +124,18 @@ struct LifeTime {
     }
     
     var weeksUntilDeath: Int {
-        return daysUntilDeath * 7
+        return daysUntilDeath / 7
     }
     
     var monthsUntilDeath: Int {
-        return Calendar.current.dateComponents([.month], from: Date.now, to: dateOfEndOfLife).day ?? 0
+        return Calendar.current.dateComponents([.month], from: Date.now, to: dateOfEndOfLife).month ?? 0
     }
     
     var yearsUntilDeath: Int {
         return lifeExpectancyInYears - ageInYears
     }
     
-    var lifeExpectancyInWeeks: Int {
-        return Calendar.current.dateComponents([.day], from: birthDay, to: dateOfEndOfLife).day ?? 0 / 7
-    }
+    
     
     
     var columns: [GridItem] {
@@ -132,6 +145,8 @@ struct LifeTime {
         case .months:
             return Array(repeating: GridItem(.fixed(6)), count: 24)
         case .weeks:
+            return Array(repeating: GridItem(.fixed(4), spacing: 3), count: 52)
+        case .days:
             return Array(repeating: GridItem(.fixed(4), spacing: 3), count: 52)
         }
     }
@@ -144,6 +159,8 @@ struct LifeTime {
             return lifeExpectancyInYears * 12
         case .weeks:
             return lifeExpectancyInWeeks
+        case .days:
+            return lifeExpectancyInWeeks * 7
         }
     }
     
@@ -155,17 +172,8 @@ struct LifeTime {
             return ageInMonths
         case .weeks:
             return ageInWeeks
-        }
-    }
-    
-    var timeScaleString: String {
-        switch timeScale {
-        case .years:
-            return "Years"
-        case .months:
-            return "Months"
-        case .weeks:
-            return "Weeks"
+        case .days:
+            return ageInWeeks * 7
         }
     }
     
@@ -177,6 +185,8 @@ struct LifeTime {
             return 4
         case .weeks:
             return 3
+        case .days:
+            return 2
         }
     }
     
@@ -188,9 +198,9 @@ struct LifeTime {
             return 11
         case .weeks:
             return 5
+        case .days:
+            return 3
         }
     }
-    
-    
     
 }
