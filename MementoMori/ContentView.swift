@@ -30,7 +30,7 @@ struct ContentView: View {
                 
                 NavigationLink {
                     
-                    Memento()
+                    Memento(lifeTime: $lifeData.lifeTime)
                             
                   
                     

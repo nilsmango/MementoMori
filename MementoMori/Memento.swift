@@ -8,58 +8,95 @@
 import SwiftUI
 
 struct Memento: View {
-    @State private var schedule: MementoSchedule = .daily
-    
-    @State private var startMemento: Int = 8
-    
-    @State private var endMemento: Int = 20
-
-    @State private var mementoText: String = "Memento Mori!"
-    
-    @State private var addRandomQuote: Bool = false
-    
-    
+    @Binding var lifeTime: LifeTime
     
     private let notifications = MementoNotifications()
 
     var body: some View {
         List {
-            Picker("Random Memento Schedule", selection: $schedule) {
-                ForEach(MementoSchedule.allCases) { schedule in
-                    if schedule != .twice {
-                        Text(schedule.rawValue.capitalized)
-                    } else {
-                        Text("Twice a Day")
+            Toggle("Activate Mementos", isOn: $lifeTime.active)
+                .onChange(of: lifeTime.active) { _ in
+
+                    DispatchQueue.global().async {
+                        notifications.scheduleMemento(active: lifeTime.active, mementoText: lifeTime.mementoText, quote: lifeTime.addRandomQuote, start: lifeTime.startMemento, end: lifeTime.endMemento, schedule: lifeTime.schedule)
+                        
+                        
+                        
                     }
                     
+                    lifeTime.mementoStatus = MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote)
                 }
-            }
-            if schedule != .never {
-                Picker("Start", selection: $startMemento){
-                    ForEach(4...20, id: \.self) { i in
-                        Text("\(i):00").tag(i)
-                            .monospacedDigit()
+            
+            if lifeTime.active != false {
+            
+                VStack {
+                    HStack {
+                        Text("Random Memento Schedule")
+                        Spacer()
                     }
+                    
+                    HStack {Picker("Random Memento Schedule", selection: $lifeTime.schedule) {
+                        ForEach(MementoSchedule.allCases) { schedule in
+                            if schedule != .twice {
+                                Text(schedule.rawValue.capitalized)
+                            } else {
+                                Text("2 / Day")
+                            }
+                            
+                        }
+                    }.pickerStyle(.wheel)
+                                        Picker("Start", selection: $lifeTime.startMemento){
+                                            ForEach(4...23, id: \.self) { i in
+                                                Text("\(i):00").tag(i)
+                                                    .monospacedDigit()
+                                            }
+                                        }
+                                        .pickerStyle(.wheel)
+                                        Text("-")
+                                        Picker("End", selection: $lifeTime.endMemento){
+                                            ForEach(4...24, id: \.self) { i in
+                                                Text("\(i):00").tag(i)
+                                                    .monospacedDigit()
+                                            }
+                                        }
+                                        .pickerStyle(.wheel)
+                                    }
                 }
-                Picker("End", selection: $endMemento){
-                    ForEach(4...24, id: \.self) { i in
-                        Text("\(i):00").tag(i)
-                            .monospacedDigit()
-                    }
-                }
+                
+                
+                
                 // einige texte vorgeben, aber auch custom, wenn custom, dann textfiel zeigen.
                 HStack {
                     Text("Custom Text:")
-                    TextField("Memento Text", text: $mementoText)
+                    TextField("Memento Text", text: $lifeTime.mementoText)
+                        .textFieldStyle(.roundedBorder)
                 }
                 
                 
-                Toggle("Add a random stoic quote", isOn: $addRandomQuote)
+                Toggle("Add a Random Stoic Quote", isOn: $lifeTime.addRandomQuote)
                 // Button mit Save (nur wenn was geändert, dann die schedules callen!), sonst "memento active"
-                Button(action: {  }) {
-                     Label("Start", systemImage: "ellipsis.circle")
-                    }
+            
+            
+            if lifeTime.mementoStatus == MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote) {
+                Label("Mementos are up to Date", systemImage: "checkmark")
+                    .foregroundColor(.blue)
+                } else {
+                    Button(action: {
+                        DispatchQueue.global().async {
+                            notifications.scheduleMemento(active: lifeTime.active, mementoText: lifeTime.mementoText, quote: lifeTime.addRandomQuote, start: lifeTime.startMemento, end: lifeTime.endMemento, schedule: lifeTime.schedule)
+                            
+                        }
+                        
+                        lifeTime.mementoStatus = MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote)
+                    }) {
+                        
+                         Label("Tap to Update Mementos", systemImage: "arrow.counterclockwise")
+                        }
+                    
+                }
             }
+                
+            
         }
         .navigationTitle("Memento")
         
@@ -68,6 +105,6 @@ struct Memento: View {
 
 struct Reminder_Previews: PreviewProvider {
     static var previews: some View {
-        Memento()
+        Memento(lifeTime: .constant(LifeTime(active:true)))
     }
 }

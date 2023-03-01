@@ -22,7 +22,16 @@ enum PossibleGraphics: String, CaseIterable, Identifiable {
 }
 
 enum MementoSchedule: String, CaseIterable, Identifiable {
-    case twice, daily, weekly, monthly, never
+    case twice, daily, weekly, monthly
     var id: Self { self }
     
+}
+
+struct MementoStatus: Equatable {
+    var active: Bool
+    var schedule: MementoSchedule
+    var startMemento: Int
+    var endMemento: Int
+    var mementoText: String
+    var addRandomQuote: Bool
 }

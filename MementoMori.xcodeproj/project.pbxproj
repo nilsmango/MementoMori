@@ -12,7 +12,7 @@
 		78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1337C29A64C5100CE924F /* Assets.xcassets */; };
 		78B1338129A64C5100CE924F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1338029A64C5100CE924F /* Preview Assets.xcassets */; };
 		78B1338829A64C9C00CE924F /* LifeDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338729A64C9C00CE924F /* LifeDots.swift */; };
-		78B1338B29A64CC000CE924F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338A29A64CC000CE924F /* Enums.swift */; };
+		78B1338B29A64CC000CE924F /* Little Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338A29A64CC000CE924F /* Little Helpers.swift */; };
 		78B1338D29A64CE400CE924F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338C29A64CE400CE924F /* ProgressBar.swift */; };
 		78B1338F29A662C300CE924F /* LifeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338E29A662C300CE924F /* LifeTime.swift */; };
 		78B1339329AA9D1B00CE924F /* LifeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339229AA9D1B00CE924F /* LifeData.swift */; };
@@ -31,7 +31,7 @@
 		78B1337E29A64C5100CE924F /* MementoMori.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MementoMori.entitlements; sourceTree = "<group>"; };
 		78B1338029A64C5100CE924F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78B1338729A64C9C00CE924F /* LifeDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeDots.swift; sourceTree = "<group>"; };
-		78B1338A29A64CC000CE924F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		78B1338A29A64CC000CE924F /* Little Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Little Helpers.swift"; sourceTree = "<group>"; };
 		78B1338C29A64CE400CE924F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		78B1338E29A662C300CE924F /* LifeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTime.swift; sourceTree = "<group>"; };
 		78B1339229AA9D1B00CE924F /* LifeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeData.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		78B1338929A64CAA00CE924F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				78B1338A29A64CC000CE924F /* Enums.swift */,
+				78B1338A29A64CC000CE924F /* Little Helpers.swift */,
 				78B1338E29A662C300CE924F /* LifeTime.swift */,
 				78B1339229AA9D1B00CE924F /* LifeData.swift */,
 				78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */,
@@ -187,7 +187,7 @@
 			files = (
 				78B1339E29ACF8FE00CE924F /* MementoNotifications.swift in Sources */,
 				78B1337B29A64C5000CE924F /* ContentView.swift in Sources */,
-				78B1338B29A64CC000CE924F /* Enums.swift in Sources */,
+				78B1338B29A64CC000CE924F /* Little Helpers.swift in Sources */,
 				78B1339C29ACBBF100CE924F /* Memento.swift in Sources */,
 				78B1339329AA9D1B00CE924F /* LifeData.swift in Sources */,
 				78B1339529AAA44E00CE924F /* OptionsView.swift in Sources */,

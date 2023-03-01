@@ -203,4 +203,22 @@ struct LifeTime {
         }
     }
     
+    
+    // Mementos
+    
+    var active: Bool = false
+    
+    var schedule: MementoSchedule = .daily
+    
+    var startMemento: Int = 8
+    
+    var endMemento: Int = 20
+
+    var mementoText: String = "Memento Mori!"
+    
+    var addRandomQuote: Bool = false
+    
+    var mementoStatus: MementoStatus = MementoStatus(active: false,schedule: .daily, startMemento: 20, endMemento: 20, mementoText: "Fuck off", addRandomQuote: true)
+    
+    
 }
