@@ -11,11 +11,29 @@ struct ProgressView: View {
     var progress: Double
     var accentColor: Color
     
-    var percentage: String {
-        let rounded = (progress * 10000).rounded() / 100
-        let formatted = String(format: "%.2f", rounded)
-        return formatted
+    
+    var animationDuration = 1.6
+    
+    @State var changingNumber = 0.00
+    
+    
+    var progressRounded: Double {
+        return (progress * 10000).rounded() / 100
     }
+    var percentage: String {
+        return String(format: "%.2f", progressRounded)
+    }
+    
+    
+    var timeCalculation: Double {
+        let times = animationDuration / 0.0002
+        let chunk = progressRounded / times
+        return chunk
+    }
+    
+    @State private var animating = false
+    
+    let timer = Timer.publish(every: 0.0002, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -24,27 +42,37 @@ struct ProgressView: View {
                 .opacity(0.2)
 
             Circle()
-                .trim(from: 0.0, to: progress)
+                .trim(from: 0.0, to: animating ? progress : 0)
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(accentColor)
                 .rotationEffect(Angle(degrees: 270))
             
             VStack {
-                Text(percentage + "%")
+                Text(String(format: "%.2f", changingNumber) + "%")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .monospacedDigit()
                 Text("complete")
                     .font(.title2)
-//                    .fontWeight(.bold)
             }
-            
-            
-                
-                
         }
             .frame(height: 200)
             .padding()
-
+            .onAppear {
+                withAnimation(.easeOut(duration: animationDuration)) {
+                    animating = true
+                }
+            }
+            .onReceive(timer) { input in
+                if changingNumber < progressRounded - 0.2 {
+                    changingNumber += timeCalculation
+                } else if changingNumber < progressRounded {
+                    changingNumber += 0.01
+                } else {
+                    timer.upstream.connect().cancel()
+                
+                }
+            }
     }
 }
 

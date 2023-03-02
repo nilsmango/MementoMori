@@ -21,6 +21,7 @@ struct ContentView: View {
                 
                 
                 Text("Days left to live if you are so lucky:")
+                    .font(.title2)
                     .padding(.top)
                 DateTimerView(futureDate: lifeData.lifeTime.dateOfEndOfLife)
                     .font(.title)
