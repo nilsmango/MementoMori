@@ -21,6 +21,7 @@
 		78B1339A29ABC8F800CE924F /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339929ABC8F800CE924F /* DotsView.swift */; };
 		78B1339C29ACBBF100CE924F /* Memento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339B29ACBBF100CE924F /* Memento.swift */; };
 		78B1339E29ACF8FE00CE924F /* MementoNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */; };
+		78FC967129AFD9FE00C7D704 /* DateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC967029AFD9FE00C7D704 /* DateTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		78B1339929ABC8F800CE924F /* DotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
 		78B1339B29ACBBF100CE924F /* Memento.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memento.swift; sourceTree = "<group>"; };
 		78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoNotifications.swift; sourceTree = "<group>"; };
+		78FC967029AFD9FE00C7D704 /* DateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				78B1339429AAA44E00CE924F /* OptionsView.swift */,
 				78B1339B29ACBBF100CE924F /* Memento.swift */,
 				78B1339929ABC8F800CE924F /* DotsView.swift */,
+				78FC967029AFD9FE00C7D704 /* DateTimerView.swift */,
 				78B1339729ABC53200CE924F /* ProgressView.swift */,
 				78B1339629ABC4F700CE924F /* Experiments */,
 				78B1338929A64CAA00CE924F /* Model */,
@@ -197,6 +200,7 @@
 				78B1338D29A64CE400CE924F /* ProgressBar.swift in Sources */,
 				78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */,
 				78B1339829ABC53200CE924F /* ProgressView.swift in Sources */,
+				78FC967129AFD9FE00C7D704 /* DateTimerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

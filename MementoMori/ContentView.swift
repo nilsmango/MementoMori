@@ -17,16 +17,16 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 
-                switch lifeData.lifeTime.timeScale {
-                case .years:
-                    Text("With a life expectancy of \(lifeData.lifeTime.lifeExpectancyInYears) years you have \(lifeData.lifeTime.yearsUntilDeath) years left to live, if you are so lucky.")
-                case .months:
-                    Text("With a life expectancy of \(lifeData.lifeTime.lifeExpectancyInMonths) months you have \(lifeData.lifeTime.monthsUntilDeath) months left to live, if you are so lucky.")
-                case .weeks:
-                    Text("With a life expectancy of \(lifeData.lifeTime.lifeExpectancyInWeeks) weeks you have \(lifeData.lifeTime.weeksUntilDeath) weeks left to live, if you are so lucky.")
-                case .days:
-                    Text("With a life expectancy of \(lifeData.lifeTime.lifeExpectancyInDays) days you have \(lifeData.lifeTime.daysUntilDeath) days left to live, if you are so lucky.")
-                }
+                    ProgressView(progress: Double(lifeData.lifeTime.ageInDays) / Double(lifeData.lifeTime.lifeExpectancyInDays), accentColor: lifeData.lifeTime.accentColor)
+                
+                
+                Text("Days left to live if you are so lucky:")
+                    .padding(.top)
+                DateTimerView(futureDate: lifeData.lifeTime.dateOfEndOfLife)
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Spacer()
                 
                 NavigationLink {
                     
@@ -50,21 +50,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 
-                switch lifeData.lifeTime.graphic {
-                case .dots:
-                    DotsView(timeScale: lifeData.lifeTime.timeScale.rawValue.capitalized, columns: lifeData.lifeTime.columns, spacing: lifeData.lifeTime.spacing, numberOfDots: {
-                        switch lifeData.lifeTime.timeScale {
-            case .years:
-                return lifeData.lifeTime.lifeExpectancyInYears
-            default:
-                return lifeData.lifeTime.lifeExpectancyInDays
-            }
-                    }()
-                                
-                                , alreadyLived: lifeData.lifeTime.ageInYears, color: lifeData.lifeTime.accentColor, framing: lifeData.lifeTime.framing)
-                case .progress:
-                    ProgressView(progress: Double(lifeData.lifeTime.ageInDays) / Double(lifeData.lifeTime.lifeExpectancyInDays), accentColor: lifeData.lifeTime.accentColor)
-                }
+                
                 Spacer()
             }
             
@@ -72,7 +58,7 @@ struct ContentView: View {
             .navigationTitle("Your Life")
             
             .toolbar {
-                Button(action: { presentOptions = true }) { Label("Options", systemImage: "ellipsis.circle")}
+                Button(action: { presentOptions.toggle() }) { Label("Options", systemImage: "ellipsis.circle")}
             }
             .sheet(isPresented: $presentOptions) {
                 NavigationView {
