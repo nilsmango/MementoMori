@@ -32,7 +32,6 @@ struct DateTimerView: View {
             .monospacedDigit()
             .onReceive(timer) { input in
                 currentDate = input
-                
             }
         
     }

@@ -6,17 +6,36 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
     @ObservedObject var lifeData: LifeData
     
+    @AppStorage("firstTimeActive") var firstTime = true
+    
+    @AppStorage("imageCarousel") var carousel = 3
+    
+    private var imageString: String {
+        if carousel == 1 {
+            return "skull0.3"
+        } else if carousel == 2 {
+            return "hourglass0.1"
+        } else if carousel == 3 {
+            return "hourglass0.2"
+        } else {
+            return "nada"
+        }
+    }
+    
     
     @State private var presentOptions = false
+    
+    @State private var skullOffset = CGSize(width: 0.0, height: 0.0)
         
     var body: some View {
         NavigationView {
             VStack {
-                
+                Spacer()
                     ProgressView(progress: Double(lifeData.lifeTime.ageInDays) / Double(lifeData.lifeTime.lifeExpectancyInDays), accentColor: lifeData.lifeTime.accentColor)
                 
                 
@@ -29,30 +48,60 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-                    
-                    Memento(lifeTime: $lifeData.lifeTime)
+                ZStack {
+                    if carousel == 0 {
+                        Image(imageString)
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.primary)
+                            .colorInvert()
+                    } else {
+                        Image(imageString)
+                            .resizable()
+                            .scaledToFit()
                             
-                  
+                    }
                     
-                } label: {
-                    Label("Life Memento", systemImage: "folder")
+                    
+                    if carousel == 3 {
+                        SpriteView(scene: Sandfall(), options: [.allowsTransparency])
+                    }
+                    
+                    
                 }
-                .buttonStyle(.borderedProminent)
                 
-                
-                Button(action: { presentOptions = true }) {
-                    Label("App Mindfulness Shortcuts", systemImage: "ellipsis.circle")
-                }
-                .buttonStyle(.borderedProminent)
-                
-                Button(action: { presentOptions = true }) {
-                    Label("Widget Previews", systemImage: "ellipsis.circle")
-                }
-                .buttonStyle(.borderedProminent)
-                
+                    .frame(height: 60)
+                    .offset(skullOffset)
+                    .gesture(
+                        DragGesture().onChanged { value in
+                            skullOffset = value.translation
+                        }
+                            .onEnded { value in
+                                withAnimation(.spring(response: 0.4, dampingFraction: 0.2)) {
+                                    skullOffset = .zero
+                                }
+                            }
+                    )
+                    .onTapGesture {
+                        carousel = (carousel + 1) % 4
+                    }
                 
                 Spacer()
+
+                if lifeData.lifeTime.active {
+                    Label("Mementos active", systemImage: "checkmark")
+                        .font(.title2)
+                        .onTapGesture {
+                            presentOptions.toggle()
+                        }
+                } else {
+                    Label("No Mementos active", systemImage: "xmark")
+                        .font(.title2)
+                        .onTapGesture {
+                            presentOptions.toggle()
+                        }
+                }
+                
             }
             
             .padding()
@@ -61,13 +110,22 @@ struct ContentView: View {
             .toolbar {
                 Button(action: { presentOptions.toggle() }) { Label("Options", systemImage: "ellipsis.circle")}
             }
+            
+            .onAppear() {
+                if firstTime {
+                    presentOptions = true
+                    firstTime = false
+                }
+            }
+            
             .sheet(isPresented: $presentOptions) {
                 NavigationView {
                     OptionsView(lifeTime: $lifeData.lifeTime)
                         .navigationTitle("Options")
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: { presentOptions = false }) { Label("Dismiss", systemImage: "x.circle.fill")}
+                                Button(action: { presentOptions = false }) { Label("Dismiss", systemImage: "xmark.circle")}
+                                    
                                 }
                             }
                         
@@ -78,6 +136,26 @@ struct ContentView: View {
             
         }
         
+    }
+}
+
+
+class Sandfall: SKScene {
+    override func sceneDidLoad() {
+        
+        size = UIScreen.main.bounds.size
+        scaleMode = .resizeFill
+        
+        
+        // anchor point
+        anchorPoint = CGPoint(x: 0.5, y: 0.55)
+        
+        // background color
+        backgroundColor = .clear
+        
+        // creating a node and adding it to scene
+        let node = SKEmitterNode(fileNamed: "SandParticles.sks")!
+        addChild(node)
         
     }
 }

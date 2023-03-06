@@ -26,14 +26,14 @@ struct ProgressView: View {
     
     
     var timeCalculation: Double {
-        let times = animationDuration / 0.0002
+        let times = animationDuration / 0.0004
         let chunk = progressRounded / times
         return chunk
     }
     
     @State private var animating = false
     
-    let timer = Timer.publish(every: 0.0002, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -72,7 +72,7 @@ struct ProgressView: View {
                     timer.upstream.connect().cancel()
                 
                 }
-            }
+            }     
     }
 }
 
