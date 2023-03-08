@@ -28,11 +28,19 @@ struct OptionsView: View {
                 Stepper(value: $lifeTime.lifeExpectancyInYears, in: 35...120, step: 1) {
                     Text("Life Expectancy: \(lifeTime.lifeExpectancyInYears)")
                 }
-//                Picker("Time Division", selection: $lifeTime.timeScale) {
-//                    ForEach(TimeScale.allCases) { division in
-//                        Text(division.rawValue.capitalized)
-//                    }
-//                }
+                Picker("Bottom Icon", selection: $lifeTime.bottomIcon) {
+                    ForEach(BottomIcon.allCases) { icon in
+                        if icon == .animatedHourglass {
+                            Text("Hourglass 2")
+                        } else {
+                            Text(icon.rawValue.capitalized)
+                        }
+                        
+                    }
+                }
+                
+                Toggle("Show Last Check-In", isOn: $lifeTime.lastCheckActive)
+                
 //                Picker("Graphic", selection: $lifeTime.graphic) {
 //                    ForEach(PossibleGraphics.allCases) { graphic in
 //                        Text(graphic.rawValue.capitalized)

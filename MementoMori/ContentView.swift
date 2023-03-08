@@ -13,21 +13,15 @@ struct ContentView: View {
     
     @AppStorage("firstTimeActive") var firstTime = true
     
-    @AppStorage("imageCarousel") var carousel = 3
+    var lastCheck: Date
+    var now: Date
     
-    private var imageString: String {
-        if carousel == 1 {
-            return "skull0.3"
-        } else if carousel == 2 {
-            return "hourglass0.1"
-        } else if carousel == 3 {
-            return "hourglass0.2"
-        } else {
-            return "nada"
-        }
+    // "Alias" so you don't have to write lifeData.lifeTime each time
+    private var lifeTime: LifeTime {
+        return lifeData.lifeTime
     }
     
-    
+  
     @State private var presentOptions = false
     
     @State private var skullOffset = CGSize(width: 0.0, height: 0.0)
@@ -36,40 +30,39 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Spacer()
-                    ProgressView(progress: Double(lifeData.lifeTime.ageInDays) / Double(lifeData.lifeTime.lifeExpectancyInDays), accentColor: lifeData.lifeTime.accentColor)
+                    ProgressView(progress: Double(lifeTime.ageInDays) / Double(lifeTime.lifeExpectancyInDays), accentColor: lifeTime.accentColor)
                 
                 
                 Text("Days left to live if you are so lucky:")
                     .font(.title2)
                     .padding(.top)
-                DateTimerView(futureDate: lifeData.lifeTime.dateOfEndOfLife)
+                DateTimerView(futureDate: lifeTime.dateOfEndOfLife)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Spacer()
-                
-                ZStack {
-                    if carousel == 0 {
-                        Image(imageString)
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.primary)
-                            .colorInvert()
-                    } else {
-                        Image(imageString)
-                            .resizable()
-                            .scaledToFit()
-                            
-                    }
-                    
-                    
-                    if carousel == 3 {
-                        SpriteView(scene: Sandfall(), options: [.allowsTransparency])
-                    }
-                    
+                if lifeTime.lastCheckActive {
+
+                    Text(dateToDateFormatted(from: lastCheck, to: now).hasDays ? "Days lost since your last check-in:" : "Time lost since your last check-in:")
+                        .font(.title2)
+                        .padding(.top)
+                Text(dateToDateFormatted(from: lastCheck, to: now).string)
+                        .font(.title)
+                        .fontWeight(.bold)
                     
                 }
                 
+                Spacer()
+                
+                if lifeTime.bottomIcon != .none {
+                    ZStack {
+                        Image(lifeTime.iconString)
+                            .resizable()
+                            .scaledToFit()
+
+                    if lifeTime.bottomIcon == .animatedHourglass {
+                        SpriteView(scene: Sandfall(), options: [.allowsTransparency])
+                    }
+                    }
                     .frame(height: 60)
                     .offset(skullOffset)
                     .gesture(
@@ -82,13 +75,11 @@ struct ContentView: View {
                                 }
                             }
                     )
-                    .onTapGesture {
-                        carousel = (carousel + 1) % 4
-                    }
+                }
                 
                 Spacer()
 
-                if lifeData.lifeTime.active {
+                if lifeTime.active {
                     Label("Mementos active", systemImage: "checkmark")
                         .font(.title2)
                         .onTapGesture {
@@ -112,13 +103,18 @@ struct ContentView: View {
             }
             
             .onAppear() {
+              
                 if firstTime {
                     presentOptions = true
                     firstTime = false
                 }
+                
             }
             
-            .sheet(isPresented: $presentOptions) {
+            
+            .sheet(isPresented: $presentOptions, onDismiss: {
+                lifeData.save()
+                }) {
                 NavigationView {
                     OptionsView(lifeTime: $lifeData.lifeTime)
                         .navigationTitle("Options")
@@ -130,9 +126,9 @@ struct ContentView: View {
                             }
                         
                 }
-                .accentColor(lifeData.lifeTime.accentColor)
+                .accentColor(lifeTime.accentColor)
             }
-            .accentColor(lifeData.lifeTime.accentColor)
+            .accentColor(lifeTime.accentColor)
             
         }
         
@@ -160,8 +156,10 @@ class Sandfall: SKScene {
     }
 }
 
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(lifeData: LifeData())
+        ContentView(lifeData: LifeData(), lastCheck: Date.init(timeIntervalSinceNow: -43322), now: Date.now)
                 }
 }

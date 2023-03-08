@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct LifeTime {
+struct LifeTime: Codable {
     
     
     var birthDay: Date = Date(timeIntervalSinceReferenceDate: -479673789.0)
@@ -22,6 +22,24 @@ struct LifeTime {
     
     /// Accent color chosen by the user.
     var accentColorSelection: PossibleColors = .red
+    
+    /// Chosen bottom icon
+    var bottomIcon: BottomIcon = .animatedHourglass
+    
+    /// Image string for chosen bottom icon
+    var iconString: String {
+        switch bottomIcon {
+        case .animatedHourglass:
+            return "hourglass0.2"
+        case .skull:
+            return "skull0.3"
+        case .hourglass:
+            return "hourglass0.1"
+        case .none:
+            return "nada"
+        }
+    }
+
     
     /// Accent color output
     var accentColor: Color {
@@ -218,7 +236,12 @@ struct LifeTime {
     
     var addRandomQuote: Bool = false
     
-    var mementoStatus: MementoStatus = MementoStatus(active: false,schedule: .daily, startMemento: 20, endMemento: 20, mementoText: "Fuck off", addRandomQuote: true)
+    var mementoStatus: MementoStatus = MementoStatus(active: false,schedule: .daily, startMemento: 20, endMemento: 20, mementoText: "Memento Mori", addRandomQuote: true)
     
     
+    // Since your last check in
+    
+    var lastCheck: Date = Date.now
+    var nowChecked: Date = Date.now
+    var lastCheckActive: Bool = false
 }
