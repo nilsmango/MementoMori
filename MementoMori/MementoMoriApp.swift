@@ -29,7 +29,7 @@ struct MementoMoriApp: App {
                     if phase == .inactive {
                         if canUpdateLastCheck == true {
                             lastCheck = Date.now
-                            print("Updated last Check")
+//                            print("Updated last Check")
                             canUpdateLastCheck = false
                         }
                         
@@ -37,7 +37,7 @@ struct MementoMoriApp: App {
                     } else if phase == .active {
                         lifeData.load()
                         now = Date.now
-                        print("updated now")
+//                        print("updated now")
                         canUpdateLastCheck = true
                     }
                 }

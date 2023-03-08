@@ -239,9 +239,7 @@ struct LifeTime: Codable {
     var mementoStatus: MementoStatus = MementoStatus(active: false,schedule: .daily, startMemento: 20, endMemento: 20, mementoText: "Memento Mori", addRandomQuote: true)
     
     
-    // Since your last check in
-    
-    var lastCheck: Date = Date.now
-    var nowChecked: Date = Date.now
+    // Activate last check in
+   
     var lastCheckActive: Bool = false
 }
