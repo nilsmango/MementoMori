@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressView: View {
+struct CustomProgressView: View {
     var progress: Double
     var accentColor: Color
     
@@ -76,8 +76,8 @@ struct ProgressView: View {
     }
 }
 
-struct ProgressView_Previews: PreviewProvider {
+struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressView(progress: 0.74525, accentColor: .red)
+        CustomProgressView(progress: 0.74525, accentColor: .red)
     }
 }

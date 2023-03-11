@@ -30,7 +30,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Spacer()
-                    ProgressView(progress: Double(lifeTime.ageInDays) / Double(lifeTime.lifeExpectancyInDays), accentColor: lifeTime.accentColor)
+                CustomProgressView(progress: Double(lifeTime.ageInDays) / Double(lifeTime.lifeExpectancyInDays), accentColor: lifeTime.accentColor)
                 
                 
                 Text("Days left to live if you are so lucky:")
@@ -61,8 +61,10 @@ struct ContentView: View {
 
                     if lifeTime.bottomIcon == .animatedHourglass {
                         SpriteView(scene: Sandfall(), options: [.allowsTransparency])
+                        SpriteView(scene: SandScatter(), options: [.allowsTransparency])
                     }
                     }
+                    .shadow(radius: 2, x: 3, y: 1)
                     .frame(height: 60)
                     .offset(skullOffset)
                     .gesture(
@@ -151,6 +153,26 @@ class Sandfall: SKScene {
         
         // creating a node and adding it to scene
         let node = SKEmitterNode(fileNamed: "SandParticles.sks")!
+        addChild(node)
+        
+    }
+}
+
+class SandScatter: SKScene {
+    override func sceneDidLoad() {
+        
+        size = UIScreen.main.bounds.size
+        scaleMode = .resizeFill
+        
+        
+        // anchor point
+        anchorPoint = CGPoint(x: 0.5, y: 0.3)
+        
+        // background color
+        backgroundColor = .clear
+        
+        // creating a node and adding it to scene
+        let node = SKEmitterNode(fileNamed: "SandParticlesScatter.sks")!
         addChild(node)
         
     }

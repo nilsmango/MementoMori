@@ -66,19 +66,19 @@ class MementoNotifications {
                     case .daily:
                         addingStep = .day
                         calendarValue = 1
-                        rangeOfNotifications = 1...12000
+                        rangeOfNotifications = 0...12000
                     case .twice:
                         addingStep = .day
                         calendarValue = 1
-                        rangeOfNotifications = 1...12000
+                        rangeOfNotifications = 0...12000
                     case .weekly:
                         addingStep = .day
                         calendarValue = 7
-                        rangeOfNotifications = 1...1560
+                        rangeOfNotifications = 0...1560
                     case .monthly:
                         addingStep = .month
                         calendarValue = 1
-                        rangeOfNotifications = 1...360
+                        rangeOfNotifications = 0...360
                     
                     }
                     

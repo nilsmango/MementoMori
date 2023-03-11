@@ -21,7 +21,7 @@ struct LifeTime: Codable {
     var lifeExpectancyInYears: Int = 75
     
     /// Accent color chosen by the user.
-    var accentColorSelection: PossibleColors = .red
+    var accentColorSelection: PossibleColors = .indigo
     
     /// Chosen bottom icon
     var bottomIcon: BottomIcon = .animatedHourglass
