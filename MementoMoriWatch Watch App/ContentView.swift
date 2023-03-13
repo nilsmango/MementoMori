@@ -6,83 +6,91 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
+    @ObservedObject var watchLifeData: WatchLifeData
     
+    @AppStorage("firstTimeActive") var firstTime = true
+    
+    var lastCheck: Date
+    var now: Date
+    
+    // "Alias" so you don't have to write lifeData.lifeTime each time
+    private var watchLifeTime: LifeTime {
+        return watchLifeData.lifeTime
+    }
     
     var body: some View {
-        VStack {
-            Spacer()
-            CustomProgressView(progress: Double(lifeTime.ageInDays) / Double(lifeTime.lifeExpectancyInDays), accentColor: lifeTime.accentColor)
-            
-            
-            Text("Days left to live if you are so lucky:")
-                .font(.title2)
-                .padding(.top)
-            DateTimerView(futureDate: lifeTime.dateOfEndOfLife)
-                .font(.title)
-                .fontWeight(.bold)
-            
-            if lifeTime.lastCheckActive {
-
-                Text(dateToDateFormatted(from: lastCheck, to: now).hasDays ? "Days lost since your last check-in:" : "Time lost since your last check-in:")
-                    .font(.title2)
-                    .padding(.top)
-            Text(dateToDateFormatted(from: lastCheck, to: now).string)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-            }
-            
-            Spacer()
-            
-            if lifeTime.bottomIcon != .none {
-                ZStack {
-                    Image(lifeTime.iconString)
-                        .resizable()
-                        .scaledToFit()
-
-                if lifeTime.bottomIcon == .animatedHourglass {
-                    SpriteView(scene: Sandfall(), options: [.allowsTransparency])
-                    SpriteView(scene: SandScatter(), options: [.allowsTransparency])
-                }
-                }
-                .shadow(radius: 2, x: 3, y: 1)
-                .frame(height: 60)
-                .offset(skullOffset)
-                .gesture(
-                    DragGesture().onChanged { value in
-                        skullOffset = value.translation
-                    }
-                        .onEnded { value in
-                            withAnimation(.spring(response: 0.4, dampingFraction: 0.2)) {
-                                skullOffset = .zero
+        NavigationView {
+            ScrollView {
+                VStack {
+                    CustomProgressView(progress: Double(watchLifeTime.ageInDays) / Double(watchLifeTime.lifeExpectancyInDays), accentColor: watchLifeTime.accentColor, largeDesign: false)
+                        .padding(.top, -25)
+                        .padding(.bottom,-5)
+                    Divider()
+                    Text("Days left to live if you are so lucky:")
+                        .font(.caption2)
+                        .padding(.vertical)
+                    DateTimerView(futureDate: watchLifeTime.dateOfEndOfLife)
+                    Text(watchLifeTime.dateOfEndOfLife, style: .timer)
+//                        .font(.headline)
+//                        .fontWeight(.bold)
+                        .padding(.bottom)
+                    Divider()
+                    
+                    if watchLifeTime.bottomIcon != .none {
+                        ZStack {
+                            Image(watchLifeTime.iconString)
+                                .resizable()
+                                .scaledToFit()
+                            
+                            if watchLifeTime.bottomIcon == .animatedHourglass {
+                                SpriteView(scene: Sandfall(), options: [.allowsTransparency])
+                                SpriteView(scene: SandScatter(), options: [.allowsTransparency])
                             }
                         }
-                )
+                        .frame(height: 50)
+                        .padding(.vertical)
+                    }
+                        
+                        
+                    Divider()
+                    
+                    if watchLifeTime.active {
+                        Label("Mementos active", systemImage: "checkmark")
+                            .padding(.vertical)
+                    } else {
+                        Label("No Mementos active", systemImage: "xmark")
+                            .padding(.vertical)
+                    }
+              
+                    Divider()
+                    
+                    NavigationLink(destination: {
+                        WatchOptionsView(lifeTime: watchLifeData.$lifeTime)
+                    }, label: {
+                        Label("Options", systemImage: "ellipsis.circle")
+                    }
+                    )
+                    
+                    
+                }
+                .padding(.horizontal)
+                
             }
+            .navigationTitle("Your Life")
+                    
+                        
+                }
             
-            Spacer()
-
-            if lifeTime.active {
-                Label("Mementos active", systemImage: "checkmark")
-                    .font(.title2)
-                    .onTapGesture {
-                        presentOptions.toggle()
-                    }
-            } else {
-                Label("No Mementos active", systemImage: "xmark")
-                    .font(.title2)
-                    .onTapGesture {
-                        presentOptions.toggle()
-                    }
-            }
-        .padding()
+       
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(watchLifeData: WatchLifeData(), lastCheck: Date.init(timeIntervalSinceNow: -43322), now: Date.now)
     }
 }

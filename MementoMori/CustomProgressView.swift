@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomProgressView: View {
     var progress: Double
     var accentColor: Color
-    
+    var largeDesign: Bool
     
     var animationDuration = 1.6
     
@@ -49,11 +49,11 @@ struct CustomProgressView: View {
             
             VStack {
                 Text(String(format: "%.2f", changingNumber) + "%")
-                    .font(.largeTitle)
+                    .font(largeDesign ? .largeTitle : .title2)
                     .fontWeight(.bold)
                     .monospacedDigit()
                 Text("complete")
-                    .font(.title2)
+                    .font(largeDesign ? .title2 : .title3)
             }
         }
             .frame(height: 200)
@@ -78,6 +78,6 @@ struct CustomProgressView: View {
 
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomProgressView(progress: 0.74525, accentColor: .red)
+        CustomProgressView(progress: 0.74525, accentColor: .red, largeDesign: false)
     }
 }
