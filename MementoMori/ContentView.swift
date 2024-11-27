@@ -25,12 +25,24 @@ struct ContentView: View {
     @State private var presentOptions = false
     
     @State private var skullOffset = CGSize(width: 0.0, height: 0.0)
+    @State private var progressOffset = CGSize(width: 0.0, height: 0.0)
         
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 CustomProgressView(progress: Double(lifeTime.ageInDays) / Double(lifeTime.lifeExpectancyInDays), accentColor: lifeTime.accentColor, largeDesign: true)
+                    .offset(progressOffset)
+                    .gesture(
+                        DragGesture().onChanged { value in
+                            progressOffset = CGSize(width: value.translation.width, height: value.translation.height)
+                        }
+                            .onEnded { value in
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.2)) {
+                                    progressOffset = .zero
+                                }
+                            }
+                    )
                 
                 
                 Text("Days left to live if you are so lucky:")
@@ -69,7 +81,7 @@ struct ContentView: View {
                     .offset(skullOffset)
                     .gesture(
                         DragGesture().onChanged { value in
-                            skullOffset = CGSize(width: value.translation.width / 3, height: value.translation.height / 3)
+                            skullOffset = CGSize(width: value.translation.width, height: value.translation.height)
                         }
                             .onEnded { value in
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.2)) {

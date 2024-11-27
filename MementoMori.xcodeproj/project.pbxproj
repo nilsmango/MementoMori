@@ -24,7 +24,6 @@
 		78FC967129AFD9FE00C7D704 /* DateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC967029AFD9FE00C7D704 /* DateTimerView.swift */; };
 		78FC967E29B62D8100C7D704 /* SandParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967D29B62D8100C7D704 /* SandParticles.sks */; };
 		78FC968029BD23E100C7D704 /* SandParticlesScatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967F29BD219A00C7D704 /* SandParticlesScatter.sks */; };
-		78FC96A129BDE35000C7D704 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC96A029BDE35000C7D704 /* WatchConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,7 +66,6 @@
 		78FC967029AFD9FE00C7D704 /* DateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimerView.swift; sourceTree = "<group>"; };
 		78FC967D29B62D8100C7D704 /* SandParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SandParticles.sks; sourceTree = "<group>"; };
 		78FC967F29BD219A00C7D704 /* SandParticlesScatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SandParticlesScatter.sks; sourceTree = "<group>"; };
-		78FC96A029BDE35000C7D704 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				78B1338A29A64CC000CE924F /* Little Helpers.swift */,
-				78FC96A029BDE35000C7D704 /* WatchConnection.swift */,
 				78B1338E29A662C300CE924F /* LifeTime.swift */,
 				78B1339229AA9D1B00CE924F /* LifeData.swift */,
 				78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */,
@@ -252,7 +249,6 @@
 				78B1338829A64C9C00CE924F /* LifeDots.swift in Sources */,
 				78B1339A29ABC8F800CE924F /* DotsView.swift in Sources */,
 				780F79B629BF1FE4007F394F /* SandStuff.swift in Sources */,
-				78FC96A129BDE35000C7D704 /* WatchConnection.swift in Sources */,
 				78B1338D29A64CE400CE924F /* ProgressBar.swift in Sources */,
 				78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */,
 				78B1339829ABC53200CE924F /* CustomProgressView.swift in Sources */,
@@ -409,7 +405,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.memento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,7 +447,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.project7III.memento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
