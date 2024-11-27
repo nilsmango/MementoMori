@@ -10,7 +10,7 @@ import Foundation
 class LifeData: ObservableObject {
     
     private static var documentsFolder: URL {
-        let appIdentifier = "group.qrcoder.codes"
+        let appIdentifier = "group.mementomori"
         return FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: appIdentifier)!
     }

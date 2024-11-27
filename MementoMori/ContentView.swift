@@ -69,10 +69,10 @@ struct ContentView: View {
                     .offset(skullOffset)
                     .gesture(
                         DragGesture().onChanged { value in
-                            skullOffset = value.translation
+                            skullOffset = CGSize(width: value.translation.width / 3, height: value.translation.height / 3)
                         }
                             .onEnded { value in
-                                withAnimation(.spring(response: 0.4, dampingFraction: 0.2)) {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.2)) {
                                     skullOffset = .zero
                                 }
                             }
@@ -98,10 +98,14 @@ struct ContentView: View {
             }
             
             .padding()
-            .navigationTitle("Your Life")
+            .navigationTitle("Memento Mori")
             
             .toolbar {
-                Button(action: { presentOptions.toggle() }) { Label("Options", systemImage: "ellipsis.circle")}
+                Button(action: { presentOptions.toggle() }) {
+                    Label("Options", systemImage: "ellipsis.circle")
+                        
+                }
+                .tint(lifeTime.accentColor)
             }
             
             .onAppear() {

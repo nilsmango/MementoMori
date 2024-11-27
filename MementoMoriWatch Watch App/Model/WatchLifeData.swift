@@ -12,7 +12,7 @@ import Foundation
 class WatchLifeData: ObservableObject {
     
     private static var documentsFolder: URL {
-        let appIdentifier = "group.qrcoder.codes"
+        let appIdentifier = "group.memento"
         return FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: appIdentifier)!
     }

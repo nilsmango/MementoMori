@@ -24,7 +24,12 @@ struct LifeTime: Codable {
     var accentColorSelection: PossibleColors = .indigo
     
     /// Chosen bottom icon
+
+    #if os(watchOS)
+    var bottomIcon: BottomIcon = .hourglass
+    #else
     var bottomIcon: BottomIcon = .animatedHourglass
+    #endif
     
     /// Image string for chosen bottom icon
     var iconString: String {

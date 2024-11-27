@@ -15,7 +15,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "hourglass0.2.svg",
+      "filename" : "hourglass0.2dark.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -26,7 +26,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "hourglass0.2dark.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

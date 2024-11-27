@@ -10,16 +10,14 @@ import SwiftUI
 struct OptionsView: View {
     
     @Binding var lifeTime: LifeTime
-    
-    @State private var colorPicker = false
-    
+        
     let columns = Array(repeating: GridItem(.fixed(25)), count: 6)
     
     private let notifications = MementoNotifications()
     
     var body: some View {
         List {
-            Section("Your live") {
+            Section("Your Life") {
                 DatePicker(
                     "Birthday",
                     selection: $lifeTime.birthDay,
@@ -56,7 +54,6 @@ struct OptionsView: View {
                                 
                                     Button(action: {
                                         lifeTime.accentColorSelection = color
-                                        colorPicker = false
                                     }) {
                                         if lifeTime.accentColorSelection == color {
                                             Label(color.rawValue.capitalized, systemImage: "checkmark.circle.fill")

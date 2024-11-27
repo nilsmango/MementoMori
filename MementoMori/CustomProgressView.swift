@@ -16,6 +16,7 @@ struct CustomProgressView: View {
     
     @State var changingNumber = 0.00
     
+    @State var progressFactor = 0.00
     
     var progressRounded: Double {
         return (progress * 10000).rounded() / 100
@@ -26,14 +27,20 @@ struct CustomProgressView: View {
     
     
     var timeCalculation: Double {
-        let times = animationDuration / 0.0004
+        let times = animationDuration / 0.004
         let chunk = progressRounded / times
+        return chunk
+    }
+    
+    var progressAnimation: Double {
+        let times = animationDuration / 0.004
+        let chunk = 1.0 / times
         return chunk
     }
     
     @State private var animating = false
     
-    let timer = Timer.publish(every: 0.0004, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.004, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -42,7 +49,7 @@ struct CustomProgressView: View {
                 .opacity(0.2)
 
             Circle()
-                .trim(from: 0.0, to: animating ? progress : 0)
+                .trim(from: 0.0, to: progress * progressFactor)
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(accentColor)
                 .rotationEffect(Angle(degrees: 270))
@@ -58,19 +65,18 @@ struct CustomProgressView: View {
         }
             .frame(height: 200)
             .padding()
-            .onAppear {
-                withAnimation(.easeOut(duration: animationDuration)) {
-                    animating = true
-                }
-            }
             .onReceive(timer) { input in
                 if changingNumber < progressRounded - 0.2 {
                     changingNumber += timeCalculation
+                    if progressFactor < 1.0 {
+                        progressFactor += progressAnimation
+                    }
+                    
                 } else if changingNumber < progressRounded {
                     changingNumber += 0.01
+                    
                 } else {
                     timer.upstream.connect().cancel()
-                
                 }
             }     
     }
@@ -78,6 +84,6 @@ struct CustomProgressView: View {
 
 struct CustomProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomProgressView(progress: 0.74525, accentColor: .red, largeDesign: false)
+        CustomProgressView(progress: 0.25, accentColor: .red, largeDesign: false)
     }
 }
