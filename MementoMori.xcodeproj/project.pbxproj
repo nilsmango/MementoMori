@@ -7,12 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		780F79B229BF17E7007F394F /* WatchOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F79B129BF17E7007F394F /* WatchOptionsView.swift */; };
-		780F79B429BF1901007F394F /* WatchLifeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F79B329BF1901007F394F /* WatchLifeData.swift */; };
 		780F79B629BF1FE4007F394F /* SandStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F79B529BF1FE4007F394F /* SandStuff.swift */; };
-		780F79B829BF213A007F394F /* MementoNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */; };
-		78A9B36029C2496B009C6272 /* TimeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9B35E29C2496B009C6272 /* TimeInputView.swift */; };
-		78A9B36129C2496B009C6272 /* DateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9B35F29C2496B009C6272 /* DateInputView.swift */; };
 		78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1337829A64C5000CE924F /* MementoMoriApp.swift */; };
 		78B1337B29A64C5000CE924F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1337A29A64C5000CE924F /* ContentView.swift */; };
 		78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1337C29A64C5100CE924F /* Assets.xcassets */; };
@@ -29,17 +24,6 @@
 		78FC967129AFD9FE00C7D704 /* DateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC967029AFD9FE00C7D704 /* DateTimerView.swift */; };
 		78FC967E29B62D8100C7D704 /* SandParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967D29B62D8100C7D704 /* SandParticles.sks */; };
 		78FC968029BD23E100C7D704 /* SandParticlesScatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967F29BD219A00C7D704 /* SandParticlesScatter.sks */; };
-		78FC968829BD267A00C7D704 /* MementoMoriWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC968729BD267A00C7D704 /* MementoMoriWatchApp.swift */; };
-		78FC968A29BD267A00C7D704 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC968929BD267A00C7D704 /* ContentView.swift */; };
-		78FC968C29BD267B00C7D704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FC968B29BD267B00C7D704 /* Assets.xcassets */; };
-		78FC968F29BD267B00C7D704 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78FC968E29BD267B00C7D704 /* Preview Assets.xcassets */; };
-		78FC969729BDCAB700C7D704 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1339729ABC53200CE924F /* CustomProgressView.swift */; };
-		78FC969829BDCAD000C7D704 /* DateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC967029AFD9FE00C7D704 /* DateTimerView.swift */; };
-		78FC969929BDCAF000C7D704 /* Little Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338A29A64CC000CE924F /* Little Helpers.swift */; };
-		78FC969A29BDD43700C7D704 /* SandParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967D29B62D8100C7D704 /* SandParticles.sks */; };
-		78FC969B29BDD43A00C7D704 /* SandParticlesScatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 78FC967F29BD219A00C7D704 /* SandParticlesScatter.sks */; };
-		78FC969C29BDDFE100C7D704 /* LifeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1338E29A662C300CE924F /* LifeTime.swift */; };
-		78FC969E29BDDFF500C7D704 /* PhoneConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC969D29BDDFF500C7D704 /* PhoneConnection.swift */; };
 		78FC96A129BDE35000C7D704 /* WatchConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FC96A029BDE35000C7D704 /* WatchConnection.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +41,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		780F79B129BF17E7007F394F /* WatchOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOptionsView.swift; sourceTree = "<group>"; };
-		780F79B329BF1901007F394F /* WatchLifeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLifeData.swift; sourceTree = "<group>"; };
 		780F79B529BF1FE4007F394F /* SandStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandStuff.swift; sourceTree = "<group>"; };
 		782EB67029C35B990086D2E7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		782EB67229C35B990086D2E7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -67,8 +49,6 @@
 		782EB67929C35B990086D2E7 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		782EB67B29C35B9A0086D2E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		782EB67D29C35B9A0086D2E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78A9B35E29C2496B009C6272 /* TimeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInputView.swift; sourceTree = "<group>"; };
-		78A9B35F29C2496B009C6272 /* DateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputView.swift; sourceTree = "<group>"; };
 		78B1337529A64C5000CE924F /* MementoMori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MementoMori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B1337829A64C5000CE924F /* MementoMoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoMoriApp.swift; sourceTree = "<group>"; };
 		78B1337A29A64C5000CE924F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,24 +67,11 @@
 		78FC967029AFD9FE00C7D704 /* DateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimerView.swift; sourceTree = "<group>"; };
 		78FC967D29B62D8100C7D704 /* SandParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SandParticles.sks; sourceTree = "<group>"; };
 		78FC967F29BD219A00C7D704 /* SandParticlesScatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SandParticlesScatter.sks; sourceTree = "<group>"; };
-		78FC968529BD267A00C7D704 /* MementoMoriWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MementoMoriWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78FC968729BD267A00C7D704 /* MementoMoriWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoMoriWatchApp.swift; sourceTree = "<group>"; };
-		78FC968929BD267A00C7D704 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		78FC968B29BD267B00C7D704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		78FC968E29BD267B00C7D704 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		78FC969D29BDDFF500C7D704 /* PhoneConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConnection.swift; sourceTree = "<group>"; };
 		78FC96A029BDE35000C7D704 /* WatchConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		78B1337229A64C5000CE924F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78FC968229BD267A00C7D704 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				78B1337729A64C5000CE924F /* MementoMori */,
-				78FC968629BD267A00C7D704 /* MementoMoriWatch Watch App */,
 				782EB67429C35B990086D2E7 /* Widgets */,
 				782EB66F29C35B990086D2E7 /* Frameworks */,
 				78B1337629A64C5000CE924F /* Products */,
@@ -150,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				78B1337529A64C5000CE924F /* MementoMori.app */,
-				78FC968529BD267A00C7D704 /* MementoMoriWatch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,38 +170,6 @@
 			path = Experiments;
 			sourceTree = "<group>";
 		};
-		78FC968629BD267A00C7D704 /* MementoMoriWatch Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				78FC968729BD267A00C7D704 /* MementoMoriWatchApp.swift */,
-				78FC968929BD267A00C7D704 /* ContentView.swift */,
-				780F79B129BF17E7007F394F /* WatchOptionsView.swift */,
-				78A9B35F29C2496B009C6272 /* DateInputView.swift */,
-				78A9B35E29C2496B009C6272 /* TimeInputView.swift */,
-				78FC969F29BDDFFA00C7D704 /* Model */,
-				78FC968B29BD267B00C7D704 /* Assets.xcassets */,
-				78FC968D29BD267B00C7D704 /* Preview Content */,
-			);
-			path = "MementoMoriWatch Watch App";
-			sourceTree = "<group>";
-		};
-		78FC968D29BD267B00C7D704 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				78FC968E29BD267B00C7D704 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		78FC969F29BDDFFA00C7D704 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				78FC969D29BDDFF500C7D704 /* PhoneConnection.swift */,
-				780F79B329BF1901007F394F /* WatchLifeData.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,23 +191,6 @@
 			productReference = 78B1337529A64C5000CE924F /* MementoMori.app */;
 			productType = "com.apple.product-type.application";
 		};
-		78FC968429BD267A00C7D704 /* MementoMoriWatch Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 78FC969029BD267B00C7D704 /* Build configuration list for PBXNativeTarget "MementoMoriWatch Watch App" */;
-			buildPhases = (
-				78FC968129BD267A00C7D704 /* Sources */,
-				78FC968229BD267A00C7D704 /* Frameworks */,
-				78FC968329BD267A00C7D704 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MementoMoriWatch Watch App";
-			productName = "MementoMoriWatch Watch App";
-			productReference = 78FC968529BD267A00C7D704 /* MementoMoriWatch Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,9 +202,6 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					78B1337429A64C5000CE924F = {
-						CreatedOnToolsVersion = 14.2;
-					};
-					78FC968429BD267A00C7D704 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
@@ -307,7 +220,6 @@
 			projectRoot = "";
 			targets = (
 				78B1337429A64C5000CE924F /* MementoMori */,
-				78FC968429BD267A00C7D704 /* MementoMoriWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -321,17 +233,6 @@
 				78B1338129A64C5100CE924F /* Preview Assets.xcassets in Resources */,
 				78FC968029BD23E100C7D704 /* SandParticlesScatter.sks in Resources */,
 				78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78FC968329BD267A00C7D704 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78FC969A29BDD43700C7D704 /* SandParticles.sks in Resources */,
-				78FC968F29BD267B00C7D704 /* Preview Assets.xcassets in Resources */,
-				78FC969B29BDD43A00C7D704 /* SandParticlesScatter.sks in Resources */,
-				78FC968C29BD267B00C7D704 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,25 +257,6 @@
 				78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */,
 				78B1339829ABC53200CE924F /* CustomProgressView.swift in Sources */,
 				78FC967129AFD9FE00C7D704 /* DateTimerView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		78FC968129BD267A00C7D704 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				78A9B36029C2496B009C6272 /* TimeInputView.swift in Sources */,
-				78FC969829BDCAD000C7D704 /* DateTimerView.swift in Sources */,
-				78FC968A29BD267A00C7D704 /* ContentView.swift in Sources */,
-				78FC969E29BDDFF500C7D704 /* PhoneConnection.swift in Sources */,
-				780F79B429BF1901007F394F /* WatchLifeData.swift in Sources */,
-				78FC969C29BDDFE100C7D704 /* LifeTime.swift in Sources */,
-				78A9B36129C2496B009C6272 /* DateInputView.swift in Sources */,
-				78FC969929BDCAF000C7D704 /* Little Helpers.swift in Sources */,
-				780F79B829BF213A007F394F /* MementoNotifications.swift in Sources */,
-				78FC968829BD267A00C7D704 /* MementoMoriWatchApp.swift in Sources */,
-				780F79B229BF17E7007F394F /* WatchOptionsView.swift in Sources */,
-				78FC969729BDCAB700C7D704 /* CustomProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +390,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -547,6 +430,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -572,73 +456,6 @@
 			};
 			name = Release;
 		};
-		78FC969129BD267B00C7D704 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MementoMoriWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = A9H57996U3;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MementoMoriWatch;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Debug;
-		};
-		78FC969229BD267B00C7D704 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MementoMoriWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = A9H57996U3;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MementoMoriWatch;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "";
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = .watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 9.1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -656,15 +473,6 @@
 			buildConfigurations = (
 				78B1338529A64C5100CE924F /* Debug */,
 				78B1338629A64C5100CE924F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		78FC969029BD267B00C7D704 /* Build configuration list for PBXNativeTarget "MementoMoriWatch Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78FC969129BD267B00C7D704 /* Debug */,
-				78FC969229BD267B00C7D704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -76,17 +76,26 @@ struct OptionsView: View {
             Section("Mementos") {
                 Toggle("Activate Mementos", isOn: $lifeTime.active)
                     .onChange(of: lifeTime.active) { _ in
-
-                        DispatchQueue.global().async {
-                            notifications.scheduleMemento(active: lifeTime.active, mementoText: lifeTime.mementoText, quote: lifeTime.addRandomQuote, start: lifeTime.startMemento, end: lifeTime.endMemento, schedule: lifeTime.schedule)
+                        Task { @MainActor in
+                            notifications.scheduleMemento(
+                                active: lifeTime.active,
+                                mementoText: lifeTime.mementoText,
+                                quote: lifeTime.addRandomQuote,
+                                start: lifeTime.startMemento,
+                                end: lifeTime.endMemento,
+                                schedule: lifeTime.schedule
+                            )
                             
-                            
-                            
+                            lifeTime.mementoStatus = MementoStatus(
+                                active: lifeTime.active,
+                                schedule: lifeTime.schedule,
+                                startMemento: lifeTime.startMemento,
+                                endMemento: lifeTime.endMemento,
+                                mementoText: lifeTime.mementoText,
+                                addRandomQuote: lifeTime.addRandomQuote
+                            )
                         }
-                        
-                        lifeTime.mementoStatus = MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote)
                     }
-                
                 if lifeTime.active != false {
                 
                     VStack {
@@ -142,12 +151,25 @@ struct OptionsView: View {
                         .foregroundColor(.blue)
                     } else {
                         Button(action: {
-                            DispatchQueue.global().async {
-                                notifications.scheduleMemento(active: lifeTime.active, mementoText: lifeTime.mementoText, quote: lifeTime.addRandomQuote, start: lifeTime.startMemento, end: lifeTime.endMemento, schedule: lifeTime.schedule)
-                                
-                            }
-                            
-                            lifeTime.mementoStatus = MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote)
+                            Task { @MainActor in
+                                        notifications.scheduleMemento(
+                                            active: lifeTime.active,
+                                            mementoText: lifeTime.mementoText,
+                                            quote: lifeTime.addRandomQuote,
+                                            start: lifeTime.startMemento,
+                                            end: lifeTime.endMemento,
+                                            schedule: lifeTime.schedule
+                                        )
+                                        
+                                        lifeTime.mementoStatus = MementoStatus(
+                                            active: lifeTime.active,
+                                            schedule: lifeTime.schedule,
+                                            startMemento: lifeTime.startMemento,
+                                            endMemento: lifeTime.endMemento,
+                                            mementoText: lifeTime.mementoText,
+                                            addRandomQuote: lifeTime.addRandomQuote
+                                        )
+                                    }
                         }) {
                             
                              Label("Tap to update Mementos", systemImage: "arrow.counterclockwise")
