@@ -37,7 +37,6 @@ class MementoNotifications {
 //    }
     
     
-    
     func scheduleMemento(active: Bool, mementoText: String, quote: Bool, start: Int, end: Int, schedule: MementoSchedule) {
         print("Starting scheduling")
         
@@ -56,76 +55,62 @@ class MementoNotifications {
         center.removeAllPendingNotificationRequests()
         
         if active {
-            // scheduling 30 years of notifications
-                    
-                    var rangeOfNotifications = 1...100
-                    var calendarValue = 1
-                    var addingStep: Calendar.Component = .day
-                    
-                    switch schedule {
-                    case .daily:
-                        addingStep = .day
-                        calendarValue = 1
-                        rangeOfNotifications = 0...12000
-                    case .twice:
-                        addingStep = .day
-                        calendarValue = 1
-                        rangeOfNotifications = 0...12000
-                    case .weekly:
-                        addingStep = .day
-                        calendarValue = 7
-                        rangeOfNotifications = 0...1560
-                    case .monthly:
-                        addingStep = .month
-                        calendarValue = 1
-                        rangeOfNotifications = 0...360
-                    
-                    }
-                    
-                            for notificationNumber in rangeOfNotifications {
-                                
-                                func addingNotificationRequest(_ addingStep: Calendar.Component, _ calendarValue: Int, _ notificationNumber: ClosedRange<Int>.Element, _ start: Int, _ end: Int, _ center: UNUserNotificationCenter, mementoText: String) {
-                                    let randomIndex = Int.random(in: 0..<randomQuotes.count)
-                                    let quote = randomQuotes[randomIndex]
-                                    
-                                    let content = UNMutableNotificationContent()
-                                    content.title = mementoText
-                                    content.body = quote
-                                    content.sound = UNNotificationSound.default
-                                    content.categoryIdentifier = "reminder"
-                                    
-                                    var dateComponents = DateComponents()
-                                    let startDate = Date.now
-                                    let endDate = Calendar.current.date(byAdding: addingStep, value: calendarValue * notificationNumber, to: startDate)!
-                                    
-                                    if schedule == .monthly {
-                                        dateComponents.month = Calendar.current.dateComponents([.month], from: endDate).month
-                                    }
-                                    
-                                    dateComponents.day = Calendar.current.dateComponents([.day], from: endDate).day
-                                    dateComponents.hour = .random(in: start..<end)
-                                    dateComponents.minute = .random(in: 0...59)
-                                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                                    
-                                    
-                                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                                    
-                                    center.add(request)
-                                    
-                                    if notificationNumber < 40 {
-                                        print(dateComponents)
-                                    }
-                                }
-                                
-                                addingNotificationRequest(addingStep, calendarValue, notificationNumber, start, end, center, mementoText: mementoText)
-                                
-                                if schedule == .twice {
-                                    
-                                    addingNotificationRequest(addingStep, calendarValue, notificationNumber, start, end, center, mementoText: mementoText)
-
-                            }
+            // scheduling yearly random notifications
+            var randomTimes: [[String: Int]]
+            
+            // Generate random times for each day of the year
+            // Use an array to ensure correct month-day mapping
+            let daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            
+            randomTimes = daysInMonths.enumerated().flatMap { (monthIndex, daysInMonth) in
+                (1...daysInMonth).map { day in
+                    [
+                        "month": monthIndex + 1,
+                        "day": day,
+                        "hour": .random(in: start..<end),
+                        "minute": Int.random(in: 0...59)
+                    ]
+                }
+            }
+                if schedule == .twice {
+                    let secondTimes = daysInMonths.enumerated().flatMap { (monthIndex, daysInMonth) in
+                        (1...daysInMonth).map { day in
+                            [
+                                "month": monthIndex + 1,
+                                "day": day,
+                                "hour": .random(in: start..<end),
+                                "minute": Int.random(in: 0...59)
+                            ]
                         }
+                }
+                    randomTimes += secondTimes
+            }
+            
+            for timeDict in randomTimes {
+                let randomIndex = Int.random(in: 0..<randomQuotes.count)
+                let quote = randomQuotes[randomIndex]
+                
+                let content = UNMutableNotificationContent()
+                content.title = mementoText
+                content.body = quote
+                content.sound = UNNotificationSound.default
+                content.categoryIdentifier = "reminder"
+                
+                var dateComponents = DateComponents()
+                dateComponents.month = timeDict["month"]
+                dateComponents.day = timeDict["day"]
+                dateComponents.hour = timeDict["hour"]
+                dateComponents.minute = timeDict["minute"]
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                
+                center.add(request)
+                
+                print(dateComponents)
+                
+            }
         }
-        
     }
 }

@@ -23,7 +23,7 @@ enum PossibleGraphics: String, CaseIterable, Identifiable, Codable {
 }
 
 enum MementoSchedule: String, CaseIterable, Identifiable, Codable {
-    case twice, daily, weekly, monthly
+    case twice, daily
     var id: Self { self }
     
 }
