@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		780F79B629BF1FE4007F394F /* SandStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F79B529BF1FE4007F394F /* SandStuff.swift */; };
+		78713CD12CFB8B83000A1B71 /* stoics.json in Resources */ = {isa = PBXBuildFile; fileRef = 78713CD02CFB8B83000A1B71 /* stoics.json */; };
+		78713CD32CFB8BFC000A1B71 /* QuotesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78713CD22CFB8BFC000A1B71 /* QuotesData.swift */; };
 		78B1337929A64C5000CE924F /* MementoMoriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1337829A64C5000CE924F /* MementoMoriApp.swift */; };
 		78B1337B29A64C5000CE924F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1337A29A64C5000CE924F /* ContentView.swift */; };
 		78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B1337C29A64C5100CE924F /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		782EB67929C35B990086D2E7 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		782EB67B29C35B9A0086D2E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		782EB67D29C35B9A0086D2E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78713CD02CFB8B83000A1B71 /* stoics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stoics.json; sourceTree = "<group>"; };
+		78713CD22CFB8BFC000A1B71 /* QuotesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesData.swift; sourceTree = "<group>"; };
 		78B1337529A64C5000CE924F /* MementoMori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MementoMori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B1337829A64C5000CE924F /* MementoMoriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MementoMoriApp.swift; sourceTree = "<group>"; };
 		78B1337A29A64C5000CE924F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				78B1339229AA9D1B00CE924F /* LifeData.swift */,
 				78B1339D29ACF8FE00CE924F /* MementoNotifications.swift */,
 				780F79B529BF1FE4007F394F /* SandStuff.swift */,
+				78713CD22CFB8BFC000A1B71 /* QuotesData.swift */,
+				78713CD02CFB8B83000A1B71 /* stoics.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 			files = (
 				78FC967E29B62D8100C7D704 /* SandParticles.sks in Resources */,
 				78B1338129A64C5100CE924F /* Preview Assets.xcassets in Resources */,
+				78713CD12CFB8B83000A1B71 /* stoics.json in Resources */,
 				78FC968029BD23E100C7D704 /* SandParticlesScatter.sks in Resources */,
 				78B1337D29A64C5100CE924F /* Assets.xcassets in Resources */,
 			);
@@ -244,6 +251,7 @@
 				78B1337B29A64C5000CE924F /* ContentView.swift in Sources */,
 				78B1338B29A64CC000CE924F /* Little Helpers.swift in Sources */,
 				78B1339329AA9D1B00CE924F /* LifeData.swift in Sources */,
+				78713CD32CFB8BFC000A1B71 /* QuotesData.swift in Sources */,
 				78B1339529AAA44E00CE924F /* OptionsView.swift in Sources */,
 				78B1338F29A662C300CE924F /* LifeTime.swift in Sources */,
 				78B1338829A64C9C00CE924F /* LifeDots.swift in Sources */,
