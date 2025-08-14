@@ -15,6 +15,12 @@ struct OptionsView: View {
     
     private let notifications = MementoNotifications()
     
+    @State private var isScheduling = false
+    @State private var schedulingProgress = NotificationProgress(current: 0, total: 0, isComplete: false)
+    @State private var showSuccessMessage = false
+    @State private var showErrorMessage = false
+    @State private var errorMessage = ""
+    
     var body: some View {
         List {
             Section("Your Life") {
@@ -77,14 +83,35 @@ struct OptionsView: View {
                 Toggle("Activate Mementos", isOn: $lifeTime.active)
                     .onChange(of: lifeTime.active) { _ in
                         Task { @MainActor in
-                            notifications.scheduleMemento(
-                                active: lifeTime.active,
-                                mementoText: lifeTime.mementoText,
-                                quote: lifeTime.addRandomQuote,
-                                start: lifeTime.startMemento,
-                                end: lifeTime.endMemento,
-                                schedule: lifeTime.schedule
-                            )
+                            // Show loading state
+                            isScheduling = true
+                            schedulingProgress = NotificationProgress(current: 0, total: 0, isComplete: false)
+                            
+                            do {
+                                try await notifications.scheduleMemento(
+                                    active: lifeTime.active,
+                                    mementoText: lifeTime.mementoText,
+                                    quote: lifeTime.addRandomQuote,
+                                    start: lifeTime.startMemento,
+                                    end: lifeTime.endMemento,
+                                    schedule: lifeTime.schedule
+                                ) { progress in
+                                    DispatchQueue.main.async {
+                                        schedulingProgress = progress
+                                    }
+                                }
+                                
+                                
+                                
+                                
+                            } catch {
+                                print("Error scheduling notifications: \(error)")
+                                errorMessage = error.localizedDescription
+                                showErrorMessage = true
+                            }
+                            
+                            isScheduling = false
+                            
                             
                             lifeTime.mementoStatus = MementoStatus(
                                 active: lifeTime.active,
@@ -146,30 +173,54 @@ struct OptionsView: View {
                     // Button mit Save (nur wenn was geändert, dann die schedules callen!), sonst "memento active"
                 
                 
-                if lifeTime.mementoStatus == MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote) {
+                if isScheduling {
+                    Text("Creating notifications \(schedulingProgress.current)/\(schedulingProgress.total)")
+                        .monospacedDigit()
+                    } else if lifeTime.mementoStatus == MementoStatus(active: lifeTime.active, schedule: lifeTime.schedule, startMemento: lifeTime.startMemento, endMemento: lifeTime.endMemento, mementoText: lifeTime.mementoText, addRandomQuote: lifeTime.addRandomQuote) {
                     Label("Mementos are up to Date", systemImage: "checkmark")
                         .foregroundColor(.blue)
                     } else {
                         Button(action: {
                             Task { @MainActor in
-                                        notifications.scheduleMemento(
-                                            active: lifeTime.active,
-                                            mementoText: lifeTime.mementoText,
-                                            quote: lifeTime.addRandomQuote,
-                                            start: lifeTime.startMemento,
-                                            end: lifeTime.endMemento,
-                                            schedule: lifeTime.schedule
-                                        )
-                                        
-                                        lifeTime.mementoStatus = MementoStatus(
-                                            active: lifeTime.active,
-                                            schedule: lifeTime.schedule,
-                                            startMemento: lifeTime.startMemento,
-                                            endMemento: lifeTime.endMemento,
-                                            mementoText: lifeTime.mementoText,
-                                            addRandomQuote: lifeTime.addRandomQuote
-                                        )
+                                // Show loading state
+                                isScheduling = true
+                                schedulingProgress = NotificationProgress(current: 0, total: 0, isComplete: false)
+                                
+                                do {
+                                    try await notifications.scheduleMemento(
+                                        active: lifeTime.active,
+                                        mementoText: lifeTime.mementoText,
+                                        quote: lifeTime.addRandomQuote,
+                                        start: lifeTime.startMemento,
+                                        end: lifeTime.endMemento,
+                                        schedule: lifeTime.schedule
+                                    ) { progress in
+                                        DispatchQueue.main.async {
+                                            schedulingProgress = progress
+                                        }
                                     }
+                                    
+                                    
+                                    
+                                    
+                                } catch {
+                                    print("Error scheduling notifications: \(error)")
+                                    errorMessage = error.localizedDescription
+                                    showErrorMessage = true
+                                }
+                                
+                                isScheduling = false
+                                
+                                
+                                lifeTime.mementoStatus = MementoStatus(
+                                    active: lifeTime.active,
+                                    schedule: lifeTime.schedule,
+                                    startMemento: lifeTime.startMemento,
+                                    endMemento: lifeTime.endMemento,
+                                    mementoText: lifeTime.mementoText,
+                                    addRandomQuote: lifeTime.addRandomQuote
+                                )
+                            }
                         }) {
                             
                              Label("Tap to update Mementos", systemImage: "arrow.counterclockwise")
