@@ -35,6 +35,22 @@ class LifeData: ObservableObject {
                 print("Loading data")
                 self?.lifeTime = jsonLifeTime
             }
+            
+            // UPDATING NOTIFICATIONS
+            Task { @MainActor in
+                do {
+                    try await MementoNotifications().scheduleRollingMementos(active: self!.lifeTime.active,
+                                                                             mementoText: self!.lifeTime.mementoText,
+                                                                             quote: self!.lifeTime.addRandomQuote,
+                                                                             start: self!.lifeTime.startMemento,
+                                                                             end: self!.lifeTime.endMemento,
+                                                                             schedule: self!.lifeTime.schedule
+                    )
+                                            
+                } catch {
+                    print("Something went wrong on appear")
+                }
+            }
         }
     }
     

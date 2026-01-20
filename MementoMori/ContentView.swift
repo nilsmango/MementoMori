@@ -111,10 +111,11 @@ struct ContentView: View {
             
             .padding()
             .navigationTitle("Memento Mori")
+            .navigationBarTitleDisplayMode(.inline)
             
             .toolbar {
                 Button(action: { presentOptions.toggle() }) {
-                    Label("Options", systemImage: "ellipsis.circle")
+                    Label("Options", systemImage: "ellipsis")
                         
                 }
                 .tint(lifeTime.accentColor)
@@ -136,9 +137,10 @@ struct ContentView: View {
                 NavigationView {
                     OptionsView(lifeTime: $lifeData.lifeTime)
                         .navigationTitle("Options")
+                        .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: { presentOptions = false }) { Label("Dismiss", systemImage: "xmark.circle")}
+                                Button(action: { presentOptions = false }) { Label("Dismiss", systemImage: "xmark")}
                                     
                                 }
                             }

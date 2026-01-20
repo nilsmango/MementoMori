@@ -20,7 +20,7 @@ struct MementoMoriApp: App {
     @State var now = Date.now
     
     @Environment(\.scenePhase) private var scenePhase
-    
+        
     var body: some Scene {
         WindowGroup {
             ContentView(lifeData: lifeData, lastCheck: lastCheck, now: now)
@@ -36,6 +36,7 @@ struct MementoMoriApp: App {
                         lifeData.load()
                         now = Date.now
                         canUpdateLastCheck = true
+                        
                     }
                 }
         }

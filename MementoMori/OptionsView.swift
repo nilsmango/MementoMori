@@ -83,23 +83,15 @@ struct OptionsView: View {
                 Toggle("Activate Mementos", isOn: $lifeTime.active)
                     .onChange(of: lifeTime.active) { _ in
                         Task { @MainActor in
-                            // Show loading state
-                            isScheduling = true
-                            schedulingProgress = NotificationProgress(current: 0, total: 0, isComplete: false)
-                            
+                           isScheduling = true
                             do {
-                                try await notifications.scheduleMemento(
-                                    active: lifeTime.active,
-                                    mementoText: lifeTime.mementoText,
-                                    quote: lifeTime.addRandomQuote,
-                                    start: lifeTime.startMemento,
-                                    end: lifeTime.endMemento,
-                                    schedule: lifeTime.schedule
-                                ) { progress in
-                                    DispatchQueue.main.async {
-                                        schedulingProgress = progress
-                                    }
-                                }
+                                try await notifications.scheduleRollingMementos(active: lifeTime.active,
+                                                                                mementoText: lifeTime.mementoText,
+                                                                                quote: lifeTime.addRandomQuote,
+                                                                                start: lifeTime.startMemento,
+                                                                                end: lifeTime.endMemento,
+                                                                                schedule: lifeTime.schedule
+                                )
                                 
                                 
                                 
@@ -123,6 +115,7 @@ struct OptionsView: View {
                             )
                         }
                     }
+                
                 if lifeTime.active != false {
                 
                     VStack {
@@ -158,9 +151,7 @@ struct OptionsView: View {
                                             .pickerStyle(.wheel)
                                         }
                     }
-                    
-                    
-                    
+                                        
                     // einige texte vorgeben, aber auch custom, wenn custom, dann textfiel zeigen.
                     HStack {
                         Text("Custom Text:")
@@ -180,29 +171,18 @@ struct OptionsView: View {
                     Label("Mementos are up to Date", systemImage: "checkmark")
                         .foregroundColor(.blue)
                     } else {
-                        Button(action: {
+                        Button(action: {  
                             Task { @MainActor in
-                                // Show loading state
-                                isScheduling = true
-                                schedulingProgress = NotificationProgress(current: 0, total: 0, isComplete: false)
-                                
+                               isScheduling = true
                                 do {
-                                    try await notifications.scheduleMemento(
-                                        active: lifeTime.active,
-                                        mementoText: lifeTime.mementoText,
-                                        quote: lifeTime.addRandomQuote,
-                                        start: lifeTime.startMemento,
-                                        end: lifeTime.endMemento,
-                                        schedule: lifeTime.schedule
-                                    ) { progress in
-                                        DispatchQueue.main.async {
-                                            schedulingProgress = progress
-                                        }
-                                    }
-                                    
-                                    
-                                    
-                                    
+                                    try await notifications.scheduleRollingMementos(active: lifeTime.active,
+                                                                                    mementoText: lifeTime.mementoText,
+                                                                                    quote: lifeTime.addRandomQuote,
+                                                                                    start: lifeTime.startMemento,
+                                                                                    end: lifeTime.endMemento,
+                                                                                    schedule: lifeTime.schedule
+                                    )
+                                                            
                                 } catch {
                                     print("Error scheduling notifications: \(error)")
                                     errorMessage = error.localizedDescription
@@ -210,7 +190,6 @@ struct OptionsView: View {
                                 }
                                 
                                 isScheduling = false
-                                
                                 
                                 lifeTime.mementoStatus = MementoStatus(
                                     active: lifeTime.active,
@@ -221,12 +200,14 @@ struct OptionsView: View {
                                     addRandomQuote: lifeTime.addRandomQuote
                                 )
                             }
-                        }) {
+                        }
                             
-                             Label("Tap to update Mementos", systemImage: "arrow.counterclockwise")
-                            }
-                        
+                        ) {
+                            
+                            Label("Tap to update Mementos", systemImage: "arrow.counterclockwise")
+                        }
                     }
+                    
                 }
             }
         }
